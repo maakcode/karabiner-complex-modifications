@@ -1,0 +1,44 @@
+{
+  "description": "If the left Command key is pressed while in the Korean keyboard layout, the keyboard layout will temporarily switch to the English keyboard.",
+  "manipulators": [
+    {
+      "type": "basic",
+      "conditions": [
+        {
+          "type": "input_source_if",
+          "input_sources": [
+            {
+              "language": "ko"
+            }
+          ]
+        }
+      ],
+      "from": {
+        "key_code": "left_command",
+        "modifiers": {
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "select_input_source": {
+            "language": "en"
+          }
+        },
+        {
+          "key_code": "left_command",
+          "lazy": true
+        }
+      ],
+      "to_after_key_up": [
+        {
+          "select_input_source": {
+            "language": "ko"
+          }
+        }
+      ]
+    }
+  ]
+}
